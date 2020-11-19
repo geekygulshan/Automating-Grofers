@@ -1,0 +1,34 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.concurrent.TimeUnit;
+
+public class Grofers {
+    public static void main (String[] args) throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\Drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://grofers.com/");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+
+        driver.findElement(By.xpath("//div[text()='New Delhi']")).click();
+        driver.findElement(By.className("react-autosuggest__input")).sendKeys("noodles", Keys.ENTER);
+        driver.findElement(By.className("add-to-cart__add-btn")).click();
+
+        driver.findElement(By.className("react-autosuggest__input")).sendKeys(Keys.CONTROL + "a",Keys.DELETE);
+        driver.findElement(By.className("react-autosuggest__input")).sendKeys("cookie",Keys.ENTER);
+        driver.findElement(By.className("add-to-cart__add-btn")).click();
+
+        driver.findElement(By.className("react-autosuggest__input")).sendKeys(Keys.CONTROL + "a",Keys.DELETE);
+        driver.findElement(By.className("react-autosuggest__input")).sendKeys("chocolate",Keys.ENTER);
+        driver.findElement(By.className("add-to-cart__add-btn")).click();
+
+        driver.findElement(By.xpath("//div[@id='app']/div/div[2]/div[2]/header/div[3]/div[2]/div")).click();
+        driver.findElement(By.className("cart-checkout")).click();
+
+        Thread.sleep(5000);
+        driver.close();
+
+    }
+}

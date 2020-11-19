@@ -1,0 +1,21 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+driver = webdriver.Chrome(executable_path='C:\Selenium\Drivers\chromedriver.exe')
+
+driver.maximize_window()
+driver.get("https://grofers.com/")
+driver.implicitly_wait(10)
+driver.find_element_by_xpath("//div[@class='cities-container-list__item-name'][text()[contains(.,'New Delhi')]]").click()
+driver.find_element_by_class_name("react-autosuggest__input").send_keys("noodles",Keys.ENTER)
+driver.find_element_by_class_name("add-to-cart__add-btn").click()
+driver.find_element_by_class_name("react-autosuggest__input").send_keys(Keys.CONTROL + "a",Keys.DELETE)
+driver.find_element_by_class_name("react-autosuggest__input").send_keys("cookie",Keys.ENTER)
+driver.find_element_by_class_name("add-to-cart__add-btn").click()
+driver.find_element_by_class_name("react-autosuggest__input").send_keys(Keys.CONTROL + "a",Keys.DELETE)
+driver.find_element_by_class_name("react-autosuggest__input").send_keys("chocolate",Keys.ENTER)
+driver.find_element_by_class_name("add-to-cart__add-btn").click()
+driver.find_element_by_xpath("//div[@id='app']/div/div[2]/div[2]/header/div[3]/div[2]/div").click()
+driver.find_element_by_class_name("cart-checkout").click()
+time.sleep(10)
+driver.quit()
